@@ -8,7 +8,8 @@
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
 #include <icmpapi.h>
-
+#include <QThread>
+#include <cdatabase.h>
 #pragma comment(lib, "iphlpapi.lib")
 #pragma comment(lib, "ws2_32.lib")
 
@@ -40,11 +41,24 @@ void MainWindow::on_close_clicked()
 
 void MainWindow::on_recup_clicked()
 {
-    if (!this->ping("192.168.0.1"))
+    if (!this->ping("10.3.141.1"))
     {
         QMessageBox::critical(this, "Erreur Réseau", "Vous n'êtes pas sur le réseau que la base de donnée locale!");
         return;
     }
+    cdatabase db("10.3.141.1", "locale", "app", "appsql", "3306");
+
+    QMessageBox msgBox;
+       msgBox.setWindowTitle("Récupération en cours...");
+       msgBox.setText("Récupération de la base de données en cours...");
+       msgBox.setStandardButtons(QMessageBox::NoButton); // Pas de boutons standard
+       msgBox.show();
+
+           if (!db.exporterDatabaseSql()) {
+               QMessageBox::critical(this, "Erreur Récupération", "La récupération a échoué");
+           } else {
+               QMessageBox::information(this, "Récupération terminée", "La récupération de la base de données est terminée.");
+           }
 }
 
 void MainWindow::on_envoie_clicked()
@@ -56,6 +70,8 @@ void MainWindow::on_envoie_clicked()
         QMessageBox::critical(this, "Erreur Réseau","Vous n'êtes pas sur le réseau de la base de donnée centrale!");
         return;
     }
+    cdatabase db("192.168.21.254", "centrale", "app", "appsql", "3306");
+
 }
 
 

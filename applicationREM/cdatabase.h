@@ -1,15 +1,20 @@
 #ifndef CDATABASE_H
 #define CDATABASE_H
 
+
 #include <QString>
 #include <QSqlDatabase>
 class cdatabase
 {
-private:
-     QSqlDatabase db;
-
+    QSqlDatabase db;
 public:
     cdatabase(QString IP, QString Db, QString username, QString password, QString Port);
+    ~cdatabase();
+    bool exporterDatabaseSql();
+
+
+
+
 };
 
 #endif // CDATABASE_H
