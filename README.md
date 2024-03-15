@@ -1,4 +1,4 @@
-# Projet de communication avec une base de données
+# Projet BTS 2nd Année (REM)<br>Communication avec une BDD
 
 Ce projet consiste en une application de communication avec une base de données centrale pour l'envoi et la réception de données. L'application est développée en C++ avec l'utilisation du framework Qt pour l'interface graphique.
 
