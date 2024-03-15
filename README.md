@@ -1,7 +1,7 @@
 # Projet de communication avec une base de données
 Ce projet consiste en une application de communication avec une base de données centrale pour l'envoi et la réception de données. L'application est développée en C++ avec l'utilisation du framework Qt pour l'interface graphique.
 
-Fonctionnalités
+## Fonctionnalités
 Envoi de données : L'application permet à l'utilisateur d'envoyer des données à une base de données centrale.
 Vérification du réseau : Avant l'envoi des données, l'application vérifie la disponibilité du réseau.
 Mise à jour automatique : Les données sont automatiquement mises à jour toutes les 5 secondes dans l'interface utilisateur.
