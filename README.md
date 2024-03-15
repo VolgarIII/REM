@@ -4,9 +4,9 @@ Ce projet consiste en une application de communication avec une base de données
 
 ## Sommaires
 - [Fonctionnalités](#Fonctionnalités)
-- [Technologies utilisées](#Technologies utilisées)
-- [Configuration requise](#Configuration requise)
-- [Interface Graphique](# Interface Graphique)
+- [Technologies utilisées](#Technologies-utilisées)
+- [Configuration requise](#Configuration-requise)
+- [Interface Graphique](#Interface-Graphique)
 - [Licence](#Licence)
   
 ## Fonctionnalités
