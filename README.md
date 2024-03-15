@@ -7,7 +7,7 @@ Ce projet consiste en une application de communication avec une base de données
 - [Technologies utilisées](#Technologies-utilisées)
 - [Configuration requise](#Configuration-requise)
 - [Interface Graphique](#Interface-Graphique)
-- [Licence](#Licence)
+
   
 ## Fonctionnalités
 - **Réception de données:** L'application permet au technicien de récupérer les données d'une base de donnée locale.
@@ -41,10 +41,6 @@ Voici à quoi ressemble l'IHM (Interface Homme Machine) du projet.<br>
 ## Contributeurs
 
 - [Julien](https://github.com/VolgarIII) - Développeur principal
-- Maxence - Développeur secondaire
-- Raphaël - Développeur tertiaire
-- Breynann - ???
-
-## Licence
-
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+- Maxence - Développeur secondaire (Site Web)
+- Raphaël - Développeur tertiaire (Capteur de Porte)
+- Breynann - ??? (Capteur Impulsion)
