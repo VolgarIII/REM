@@ -31,9 +31,9 @@ Ce projet consiste en une application de communication avec une base de données
 ## Contributeurs
 
 - [Julien](https://github.com/VolgarIII) - Développeur principal
-- [Maxence] - Développeur secondaire
-- [Raphaël] - Développeur tertiaire
-- [Breynann] - ???
+- Maxence - Développeur secondaire
+- Raphaël - Développeur tertiaire
+- Breynann - ???
 
 ## Licence
 
