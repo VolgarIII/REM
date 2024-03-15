@@ -10,11 +10,10 @@ Ce projet consiste en une application de communication avec une base de données
 - [Licence](#Licence)
   
 ## Fonctionnalités
-
-- **Envoi de données :** L'application permet à l'utilisateur d'envoyer des données à une base de données centrale.
+- **Réception de données:** L'application permet au technicien de récupérer les données d'une base de donnée locale.
+- **Envoi de données :** L'application permet au technicien d'envoyer des données vers la base de données centrale.
 - **Vérification du réseau :** Avant l'envoi des données, l'application vérifie la disponibilité du réseau.
-- **Mise à jour automatique :** Les données sont automatiquement mises à jour toutes les 5 secondes dans l'interface utilisateur.
-
+  
 ## Technologies utilisées
 
 - **C++ :** Langage de programmation utilisé pour le développement de l'application.
