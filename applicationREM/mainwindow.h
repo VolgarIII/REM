@@ -24,6 +24,8 @@ private slots:
 
     void on_recup_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     bool ping(const char*);

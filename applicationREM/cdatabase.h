@@ -11,7 +11,7 @@ public:
     cdatabase(QString IP, QString Db, QString username, QString password, QString Port);
     ~cdatabase();
     bool exporterDatabaseSql();
-
+    bool envoieDatabaseSql();
 
 
 

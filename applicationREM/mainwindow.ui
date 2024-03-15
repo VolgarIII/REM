@@ -6,32 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>458</width>
+    <height>470</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>REM Logiciel</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QProgressBar" name="progressBar">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>520</y>
-      <width>751</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
    <widget class="QPushButton" name="recup">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>190</y>
+      <x>140</x>
+      <y>200</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -43,7 +36,7 @@
    <widget class="QPushButton" name="envoie">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>140</x>
       <y>360</y>
       <width>151</width>
       <height>41</height>
@@ -56,7 +49,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>80</x>
       <y>10</y>
       <width>321</width>
       <height>81</height>
@@ -69,8 +62,8 @@
    <widget class="QPushButton" name="close">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>10</y>
+      <x>380</x>
+      <y>380</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -82,8 +75,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>300</y>
+      <x>60</x>
+      <y>290</y>
       <width>301</width>
       <height>51</height>
      </rect>
@@ -95,8 +88,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>140</y>
+      <x>70</x>
+      <y>130</y>
       <width>331</width>
       <height>51</height>
      </rect>
@@ -105,13 +98,26 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Récupère les données de la base de donnée locale du&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;		kiosque&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>390</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Effacer Sauvegarde</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>458</width>
      <height>22</height>
     </rect>
    </property>
