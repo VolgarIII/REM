@@ -2,6 +2,13 @@
 
 Ce projet consiste en une application de communication avec une base de données centrale pour l'envoi et la réception de données. L'application est développée en C++ avec l'utilisation du framework Qt pour l'interface graphique.
 
+## Sommaires
+- [Fonctionnalités](#Fonctionnalités)
+- [Technologies utilisées](#Technologies utilisées)
+- [Configuration requise](#Configuration requise)
+- [Interface Graphique](# Interface Graphique)
+- [Licence](#Licence)
+  
 ## Fonctionnalités
 
 - **Envoi de données :** L'application permet à l'utilisateur d'envoyer des données à une base de données centrale.
@@ -27,6 +34,10 @@ Ce projet consiste en une application de communication avec une base de données
 3. Ouvrez le projet dans votre environnement de développement préféré.
 4. Compilez et exécutez l'application.
 5. Utilisez l'interface pour envoyer des données à la base de données centrale.
+
+## Interface Graphique
+Voici à quoi ressemble l'IHM (Interface Homme Machine) du projet.
+![image.png](https://imgur.com/a/JIE5DB0)
 
 ## Contributeurs
 
