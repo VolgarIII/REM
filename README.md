@@ -36,8 +36,8 @@ Ce projet consiste en une application de communication avec une base de données
 5. Utilisez l'interface pour envoyer des données à la base de données centrale.
 
 ## Interface Graphique
-Voici à quoi ressemble l'IHM (Interface Homme Machine) du projet.
-![image.png](https://imgur.com/a/JIE5DB0)
+Voici à quoi ressemble l'IHM (Interface Homme Machine) du projet.<br>
+![Imgur](https://i.imgur.com/6I7nzof.png)
 
 ## Contributeurs
 
