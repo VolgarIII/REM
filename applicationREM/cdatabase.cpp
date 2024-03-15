@@ -63,7 +63,6 @@ bool cdatabase::exporterDatabaseSql()
            QSqlRecord rec = query.record();
            int fieldCount = rec.count();
 
-
            if (query.next()) {
 
                QString insertQueryString = "INSERT INTO " + table + " VALUES ";
@@ -88,8 +87,6 @@ bool cdatabase::exporterDatabaseSql()
           QSqlQuery effacerTableQuery("TRUNCATE "+table,db);
         }
        }
-
-
        outputFile.close();
        return true;
    }
