@@ -10,6 +10,8 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    Ui::MainWindow *ui;
+    bool ping(const char*);
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -19,16 +21,11 @@ public:
 private slots:
     void on_close_clicked();
 
-
     void on_envoie_clicked();
 
     void on_recup_clicked();
 
-    void on_pushButton_clicked();
-
-private:
-    Ui::MainWindow *ui;
-    bool ping(const char*);
+    void on_pushButton_clicked();   
 
 };
 #endif // MAINWINDOW_H

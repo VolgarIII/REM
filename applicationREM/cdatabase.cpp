@@ -110,7 +110,7 @@ bool cdatabase::envoieDatabaseSql()
     QStringList filters;
     filters << "*.sql";
 
-    // Lister les fichiers dans le dossier qui correspondent aux filtres
+    // Liste les fichiers dans le dossier qui correspondent aux filtres
     QStringList fileList = directory.entryList(filters, QDir::Files);
 
     if (fileList.size() == 0)
@@ -118,26 +118,26 @@ bool cdatabase::envoieDatabaseSql()
         qDebug() << "Aucun fichier n'est présent dans le dossier de sauvegarde";
         return false;
     }
-    // Parcourir tous les fichiers
+    // Parcoure tous les fichiers
     for (const QString &fileName : fileList)
     {
         QFile file(directory.filePath(fileName));
 
-        // Ouvrir le fichier en mode lecture
+        // Ouvre le fichier en mode lecture
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             qDebug() << "Impossible d'ouvrir le fichier :" << file.fileName();
-            return false; // Passer au fichier suivant
+            return false; // Passe au fichier suivant
         }
 
         QTextStream in(&file);
         QString fileContent = in.readAll();
         file.close();
 
-        // Séparer les requêtes SQL
+        // Sépare les requêtes SQL
         QStringList queries = fileContent.split(QRegularExpression(";\\s*(?:\n|\r\n|\r)?"));
 
-        // Exécuter chaque requête SQL
+        // Exécute chaque requête SQL
         for (const QString &query : queries)
         {
             QString trimmedQuery = query.trimmed();
@@ -148,7 +148,7 @@ bool cdatabase::envoieDatabaseSql()
                 {
                     qDebug() << "Erreur lors de l'exécution de la requête SQL dans le fichier :" << file.fileName();
                     qDebug() << "Requête SQL :" << trimmedQuery;
-                    return false; // Passer à la requête suivante
+                    return false; // Passe à la requête suivante
                 }
             }
         }
