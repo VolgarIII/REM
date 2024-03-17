@@ -4,6 +4,7 @@
 
 #include <QString>
 #include <QSqlDatabase>
+
 class cdatabase
 {
     QSqlDatabase db;

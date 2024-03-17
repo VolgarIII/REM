@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
         updateLabelText();
-        // Créer un QTimer pour déclencher la mise à jour toutes les 5 secondes
+        // QTimer pour déclencher la mise à jour toutes les 5 secondes
             QTimer *timer = new QTimer(this);
             connect(timer, &QTimer::timeout, this, &MainWindow::updateLabelText);
             timer->start(5000); // 5000 millisecondes = 5 secondes
@@ -41,22 +41,31 @@ void MainWindow::on_close_clicked()
 
 void MainWindow::on_recup_clicked()
 {
+    // Ping sur la base de données Locale
     if (!this->ping("10.3.141.1"))
     {
+        // Affiche un message d'erreur si on n'est pas présent dans le réseau locale
         QMessageBox::critical(this, "Erreur Réseau", "Vous n'êtes pas sur le réseau que la base de donnée locale!");
-        return;
+        return; // Sort de la fonction si le ping échoue
     }
+    //Initialise la connexion à la base de données locale
     cdatabase db("10.3.141.1", "locale", "app", "appsql", "3306");
 
+    // Affiche une boîte de dialogue informant de la récupération en cours
     QMessageBox msgBox;
        msgBox.setWindowTitle("Récupération en cours...");
        msgBox.setText("Récupération de la base de données en cours...");
        msgBox.setStandardButtons(QMessageBox::NoButton); // Pas de boutons standard
        msgBox.show();
 
-           if (!db.exporterDatabaseSql()) {
+            //Exportation de la BDD Locale
+           if (!db.exporterDatabaseSql()) 
+           {
+               // Affiche un message d'erreur si l'exportation  échoue
                QMessageBox::critical(this, "Erreur Récupération", "La récupération a échoué");
-           } else {
+           } else 
+           {
+               // Affiche un message de réussite si l'exportation réussit
                QMessageBox::information(this, "Récupération terminée", "La récupération de la base de données est terminée.");
            }
 }
@@ -70,6 +79,7 @@ void MainWindow::on_envoie_clicked()
         QMessageBox::critical(this, "Erreur Réseau","Vous n'êtes pas sur le réseau de la base de donnée centrale!");
         return;
     }
+        //Initialise la connexion à la base de données locale
     cdatabase db("192.168.21.254", "centrale", "app", "appsql", "3306");
     QMessageBox msgBox;
        msgBox.setWindowTitle("Envoie des données en cours...");
@@ -77,6 +87,7 @@ void MainWindow::on_envoie_clicked()
        msgBox.setStandardButtons(QMessageBox::NoButton); // Pas de boutons standard
        msgBox.show();
 
+            //Importation de la BDD Locale sur centrale
            if (!db.envoieDatabaseSql()) {
                QMessageBox::critical(this, "Erreur Envoie", "L'envoie des données a échoué");
            } else {
