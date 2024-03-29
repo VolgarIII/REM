@@ -20,8 +20,6 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-
-
          // Créer le dossier si nécessaire
          if (!std::filesystem::exists(cheminFichierREM))
              std::filesystem::create_directory(cheminFichierREM);

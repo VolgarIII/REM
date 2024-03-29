@@ -15,8 +15,8 @@ class cdatabase
 public:
     cdatabase(QString IP, QString Db, QString username, QString password, QString Port);
     ~cdatabase();
-    bool exporterDatabaseSql();
-    bool importerDatabaseSql();
+    bool exporterDatabaseSql(); // Récupération des données
+    bool importerDatabaseSql(); // Envoie des données
 
 
 
