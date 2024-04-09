@@ -10,6 +10,7 @@
 #include <QTextStream>
 #include <QDateTime>
 #include <filesystem>
+#include <csauvegarde.h>
 using namespace std;
 
 cdatabase::cdatabase(QString IP, QString Db, QString username, QString password, QString Port)
@@ -39,6 +40,7 @@ cdatabase::~cdatabase()
     db.close();
 }
 
+
 bool cdatabase::exporterDatabaseSql()
 {
 
@@ -47,26 +49,9 @@ bool cdatabase::exporterDatabaseSql()
         qDebug() << "La connexion à la base de données n'est pas ouverte.";
         return false;
     }
-
-    QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
-    QString nomFichier = "recup_" + timestamp + ".sql";
-    // Convertir cheminDossierSauvegarde en QString
-    QString dossierSauvegarde = QString::fromStdString(this->cheminDossierSauvegarde.generic_string());
-
-    // Créer le chemin complet du fichier de sortie
-    QString outputPath = dossierSauvegarde + "/" + nomFichier;
-
-    QFile outputFile(outputPath);
-
-    if (!outputFile.open(QIODevice::WriteOnly | QIODevice::Text))
-    {
-        qDebug() << "Impossible d'ouvrir le fichier de sortie.";
-        return false;
-    }
-
-    QTextStream out(&outputFile);
-
+    csauvegarde save;
     QStringList tables = db.tables();
+    QString fullQueryString;
     for (const QString &table : tables)
     {
         if (table == "porte" || table == "capteurconso")
@@ -95,12 +80,12 @@ bool cdatabase::exporterDatabaseSql()
                 }
 
                 insertQueryString += valeur.join(",\n ") + ";";
-                out << insertQueryString << "\n";
+                fullQueryString += insertQueryString+"\n";
             }
             QSqlQuery effacerTableQuery("TRUNCATE " + table, db);
+            save.creerSauvegarde(fullQueryString);
         }
     }
-    outputFile.close();
     return true;
 }
 
@@ -111,43 +96,8 @@ bool cdatabase::importerDatabaseSql()
         qDebug() << "La connexion à la base de données n'est pas ouverte.";
         return false;
     }
-    QDir directory(this->cheminDossierSauvegarde);
-    if (!directory.exists())
-    {
-        qDebug() << "Le dossier spécifié n'existe pas.";
-        return false;
-    }
-
-    // Filtre les fichiers dans le dossier
-    QStringList filters;
-    filters << "*.sql";
-
-    // Liste les fichiers dans le dossier qui correspondent aux filtres
-    QStringList fileList = directory.entryList(filters, QDir::Files);
-
-    if (fileList.size() == 0)
-    {
-        qDebug() << "Aucun fichier n'est présent dans le dossier de sauvegarde";
-        return false;
-    }
-    // Parcoure tous les fichiers
-    for (const QString &fileName : fileList)
-    {
-        QFile file(directory.filePath(fileName));
-
-        // Ouvre le fichier en mode lecture
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            qDebug() << "Impossible d'ouvrir le fichier :" << file.fileName();
-            return false; // Passe au fichier suivant
-        }
-
-        QTextStream in(&file);
-        QString fileContent = in.readAll();
-        file.close();
-
-        // Sépare les requêtes SQL
-        QStringList queries = fileContent.split(QRegularExpression(";\\s*(?:\n|\r\n|\r)?"));
+    csauvegarde save;
+    QStringList queries = save.obtenirSauvegardes();
 
         // Exécute chaque requête SQL
         for (const QString &query : queries)
@@ -158,18 +108,11 @@ bool cdatabase::importerDatabaseSql()
                 QSqlQuery query(db);
                 if (!query.exec(trimmedQuery))
                 {
-                    qDebug() << "Erreur lors de l'exécution de la requête SQL dans le fichier :" << file.fileName();
                     qDebug() << "Requête SQL :" << trimmedQuery;
                     return false; // Passe à la requête suivante
                 }
             }
         }
-
-        if (!file.remove())
-        {
-            qDebug() << "Impossible de supprimer le fichier :" << file.fileName();
-        }
-    }
 
     return true;
 }

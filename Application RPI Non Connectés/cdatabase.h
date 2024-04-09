@@ -1,10 +1,11 @@
 #ifndef CDATABASE_H
 #define CDATABASE_H
 
-
+#include "csauvegarde.h"
 #include <QString>
 #include <QSqlDatabase>
 #include <filesystem>
+
 using namespace std;
 
 class cdatabase

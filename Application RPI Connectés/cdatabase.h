@@ -20,8 +20,6 @@ public:
     bool exporterDatabaseSql();
     bool importerDatabaseSql();
 
-
-
 };
 
 #endif // CDATABASE_H

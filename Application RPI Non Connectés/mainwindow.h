@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <filesystem>
+#include "cping.h"
+#include "csauvegarde.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -12,9 +14,8 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
     Ui::MainWindow *ui;
-    bool ping(const char*);
-    std::filesystem::path cheminFichierREM = std::filesystem::current_path()/ "dossierREM";
-
+    csauvegarde save;
+    cping ping;
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

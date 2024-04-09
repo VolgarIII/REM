@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>REM Logiciel</string>
   </property>
+  <property name="windowIcon">
+   <iconset theme="eden">
+    <normaloff>C:/Users/Etudiant IR2/Downloads/téléchargement-Photoroom.png-Photoroom.png</normaloff>C:/Users/Etudiant IR2/Downloads/téléchargement-Photoroom.png-Photoroom.png</iconset>
+  </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
@@ -115,9 +119,9 @@
     <property name="geometry">
      <rect>
       <x>301</x>
-      <y>250</y>
+      <y>245</y>
       <width>141</width>
-      <height>16</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">

@@ -14,11 +14,15 @@ win32 {
 
 SOURCES += \
     cdatabase.cpp \
+    cping.cpp \
+    csauvegarde.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     cdatabase.h \
+    cping.h \
+    csauvegarde.h \
     mainwindow.h
 
 FORMS += \

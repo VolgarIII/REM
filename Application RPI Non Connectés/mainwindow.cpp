@@ -8,28 +8,23 @@
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
 #include <icmpapi.h>
-#include <QThread>
 #include <cdatabase.h>
 #include <QDir>
-#include <QFileInfoList>
+#include <csauvegarde.h>
 
-#pragma comment(lib, "iphlpapi.lib");
-#pragma comment(lib, "ws2_32.lib");
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-         // Créer le dossier si nécessaire
-         if (!std::filesystem::exists(cheminFichierREM))
-             std::filesystem::create_directory(cheminFichierREM);
 
     ui->setupUi(this);
     updateLabelText();
+
     // QTimer pour déclencher la mise à jour toutes les 5 secondes
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::updateLabelText);
-    timer->start(5000); // 5000 millisecondes = 5 secondes
+    timer->start(5 * 1000); // 1000 millisecondes = 1 seconde
 }
 
 MainWindow::~MainWindow()
@@ -45,7 +40,7 @@ void MainWindow::on_close_clicked()
 void MainWindow::on_recup_clicked()
 {
     // Ping sur la base de données Locale
-    if (!this->ping("10.3.141.1"))
+    if (!ping.ping("10.3.141.1"))
     {
         // Affiche un message d'erreur si on n'est pas présent dans le réseau locale
         QMessageBox::critical(this, "Erreur Réseau", "Vous n'êtes pas sur le réseau que la base de donnée locale!");
@@ -76,7 +71,7 @@ void MainWindow::on_recup_clicked()
 void MainWindow::on_envoie_clicked()
 {
     // Ping sur la base de donnée centrale
-    if (!this->ping("192.168.21.254"))
+    if (!ping.ping("192.168.21.254"))
     {
         // Message d'erreur si on ne se trouve pas dans le réseau de la Centrale
         QMessageBox::critical(this, "Erreur Réseau", "Vous n'êtes pas sur le réseau de la base de donnée centrale!");
@@ -103,14 +98,9 @@ void MainWindow::on_envoie_clicked()
 
 void MainWindow::updateLabelText()
 {
-    QDir directory(this->cheminFichierREM);
+    csauvegarde save;
 
-    QStringList filters;
-    filters << "*.sql";
-
-    QFileInfoList fileInfoList = directory.entryInfoList(filters, QDir::Files);
-
-    int nombreFichiers = fileInfoList.size();
+    int nombreFichiers = save.getNombreFichiers();
 
     if (nombreFichiers <= 1)
         ui->fichierPresent->setText("Fichier présent: " + QString::number(nombreFichiers));
@@ -132,28 +122,14 @@ void MainWindow::on_effacerSauvegarde_clicked()
 
     if (question.clickedButton() == ButtonOui)
     {
-        QDir directory(this->cheminFichierREM);
-        if (!directory.exists())
-        {
-            qDebug() << "Le dossier spécifié n'existe pas.";
-            return;
-        }
-        // Filtre les fichiers dans le dossier
-        QStringList filters;
-        filters << "*.sql";
 
-        // Lister les fichiers dans le dossier qui correspondent aux filtres
-        QStringList fileList = directory.entryList(filters, QDir::Files);
+      if (!save.supprimerSauvegarde())
+      {
+          QMessageBox::critical(this, "Erreur Suppression Sauvegarde", "La suppression des fichiers de sauvegardes a échoué");
+          return;
 
-        // Parcourir tous les fichiers
-        for (const QString &fileName : fileList)
-        {
-            QFile file(directory.filePath(fileName));
-            if (!file.remove())
-            {
-                qDebug() << "Impossible de supprimer le fichier :" << file.fileName();
-            }
-        }
+      }
+
     }
     else if (question.clickedButton() == ButtonNon)
     {
@@ -161,66 +137,5 @@ void MainWindow::on_effacerSauvegarde_clicked()
     }
 }
 
-bool MainWindow::ping(const char *adresseIP)
-{
-
-    // Déclaration des variables locales
-    HANDLE hIcmpFile;               // Handle pour l'accès ICMP
-    DWORD dwRetVal = 0;             // Valeur de retour pour les fonctions ICMP
-    char SendData[32] = "PingTest"; // Données à envoyer dans le paquet ping
-    LPVOID ReplyBuffer = NULL;      // Tampon de réponse ICMP
-    DWORD ReplySize = 0;            // Taille de la réponse
-
-    sockaddr_in saGNI;                       // Structure pour stocker l'adresse IP à pinger
-    ZeroMemory(&saGNI, sizeof(sockaddr_in)); // Initialisation de la structure à zéro
-    saGNI.sin_family = AF_INET;              // Famille d'adresses internet
-
-    // Convertir l'adresse IP au format binaire
-    if (inet_pton(AF_INET, adresseIP, &(saGNI.sin_addr)) != 1)
-    {
-        std::cerr << "Adresse IP non valide : " << adresseIP << std::endl;
-        return false; // Retourne false si l'adresse IP est invalide
-    }
-
-    // Créer un handle pour les opérations ICMP
-    hIcmpFile = IcmpCreateFile();
-    if (hIcmpFile == INVALID_HANDLE_VALUE)
-    {
-        std::cerr << "Erreur lors de la création du handle ICMP." << std::endl;
-        return false; // Retourne false en cas d'échec de création du handle
-    }
-
-    // Calcule la taille du tampon de réponse
-    ReplySize = sizeof(ICMP_ECHO_REPLY) + sizeof(SendData);
-
-    // Alloue de la mémoire pour le tampon de réponse
-    ReplyBuffer = (VOID *)malloc(ReplySize);
-    if (ReplyBuffer == NULL)
-    {
-        std::cerr << "Erreur lors de l'allocation de mémoire pour la réponse ICMP." << std::endl;
-        return false; 
-    }
-
-    // Envoi un paquet ping et recevoir la réponse
-    dwRetVal = IcmpSendEcho(hIcmpFile, saGNI.sin_addr.S_un.S_addr, SendData, sizeof(SendData), NULL, ReplyBuffer, ReplySize, 1000);
-    if (dwRetVal != 0)
-    {
-        // Extraction des informations de réponse
-        PICMP_ECHO_REPLY pEchoReply = (PICMP_ECHO_REPLY)ReplyBuffer;
-        struct in_addr ReplyAddr;
-        ReplyAddr.S_un.S_addr = pEchoReply->Address;
-        std::cout << "Ping reussi. Temps de reponse : " << pEchoReply->RoundTripTime << "ms" << std::endl;
-        return true; // Retourne true si le ping est réussi
-    }
-    else
-    {
-        std::cerr << "Erreur lors de l'envoi du ping. Code d'erreur : " << GetLastError() << std::endl;
-        return false; // Retourne false si l'envoi du ping échoue
-    }
-
-    // Libère la mémoire et ferme le handle
-    free(ReplyBuffer);
-    IcmpCloseHandle(hIcmpFile);
-}
 
 
