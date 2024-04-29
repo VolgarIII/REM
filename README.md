@@ -6,8 +6,12 @@ Ce projet consiste en une application de communication avec une base de données
 - [Fonctionnalités](#Fonctionnalités)
 - [Technologies utilisées](#Technologies-utilisées)
 - [Configuration requise](#Configuration-requise)
+<<<<<<< HEAD
 - [Interface Graphique](#Interface-Graphique)
 
+=======
+- [Contributeurs](#Contributeurs)
+>>>>>>> 0e8228f81e0d5831b120c7fb7adac7efe1ff5615
   
 ## Fonctionnalités
 - **Réception de données:** L'application permet au technicien de récupérer les données d'une base de donnée locale.
@@ -34,6 +38,7 @@ Ce projet consiste en une application de communication avec une base de données
 4. Compilez et exécutez l'application.
 5. Utilisez l'interface pour envoyer des données à la base de données centrale.
 
+<<<<<<< HEAD
 ## Interface Graphique
 Voici à quoi ressemble l'IHM (Interface Homme Machine) du projet.<br>
 ![Imgur](https://i.imgur.com/6I7nzof.png)
@@ -44,3 +49,11 @@ Voici à quoi ressemble l'IHM (Interface Homme Machine) du projet.<br>
 - Maxence - Développeur secondaire (Site Web)
 - Raphaël - Développeur tertiaire (Capteur de Porte)
 - Breynann - ??? (Capteur Impulsion)
+=======
+## Contributeurs
+
+- [Julien](https://github.com/VolgarIII) - Développeur principal (récupération et centralisation des données)
+- Maxence - Développeur secondaire (Site Web)
+- Raphaël - Développeur tertiaire (Capteur de Porte, Paramétrage dispostifs)
+- ~~Breynann - ??? (Capteur Impulsion)~~ (Abandon du BTS en cours d'année)
+>>>>>>> 0e8228f81e0d5831b120c7fb7adac7efe1ff5615

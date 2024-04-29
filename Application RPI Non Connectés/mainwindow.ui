@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>458</width>
-    <height>470</height>
+    <width>743</width>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>REM Logiciel</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="eden">
+    <normaloff>C:/Users/Etudiant IR2/Downloads/téléchargement-Photoroom.png-Photoroom.png</normaloff>C:/Users/Etudiant IR2/Downloads/téléchargement-Photoroom.png-Photoroom.png</iconset>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
@@ -23,8 +27,8 @@
    <widget class="QPushButton" name="recup">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>200</y>
+      <x>100</x>
+      <y>170</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -36,34 +40,34 @@
    <widget class="QPushButton" name="envoie">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>360</y>
+      <x>480</x>
+      <y>170</y>
       <width>151</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Envoyer les données</string>
+     <string>Envoyer données</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="titre">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>176</x>
       <y>10</y>
-      <width>321</width>
+      <width>391</width>
       <height>81</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Récupération de bases données Locales &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Envoie sur base de donnée Centrale&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;Récupération de bases données Locales &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;Envoie sur base de donnée Centrale&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="close">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>380</y>
+      <x>690</x>
+      <y>10</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -72,37 +76,37 @@
      <string>X</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="EnvoieLabel">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>290</y>
+      <x>410</x>
+      <y>110</y>
       <width>301</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Envoie les données sur la base de donnée centrale&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Fichier présent: {number}&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Envoie les données sur la centrale&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="RecupLabel">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>130</y>
-      <width>331</width>
+      <x>40</x>
+      <y>110</y>
+      <width>291</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Récupère les données de la base de donnée locale du&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;		kiosque&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Récupère les données du kiosque test&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="effacerSauvegarde">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>390</y>
+      <x>300</x>
+      <y>270</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -111,13 +115,26 @@
      <string>Effacer Sauvegarde</string>
     </property>
    </widget>
+   <widget class="QLabel" name="fichierPresent">
+    <property name="geometry">
+     <rect>
+      <x>301</x>
+      <y>245</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fichier présent: {number}</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>458</width>
+     <width>743</width>
      <height>22</height>
     </rect>
    </property>

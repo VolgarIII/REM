@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <filesystem>
+#include "clog.h"
+#include "cping.h"
+#include "csauvegarde.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -11,7 +15,9 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
     Ui::MainWindow *ui;
-    bool ping(const char*);
+    csauvegarde save;
+    cping ping;
+    CLog log;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -25,7 +31,7 @@ private slots:
 
     void on_recup_clicked();
 
-    void on_pushButton_clicked();   
+    void on_effacerSauvegarde_clicked();
 
 };
 #endif // MAINWINDOW_H
