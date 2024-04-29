@@ -6,6 +6,7 @@ Ce projet consiste en une application de communication avec une base de données
 - [Fonctionnalités](#Fonctionnalités)
 - [Technologies utilisées](#Technologies-utilisées)
 - [Configuration requise](#Configuration-requise)
+- [Contributeurs](#Contributeurs)
   
 ## Fonctionnalités
 - **Réception de données:** L'application permet au technicien de récupérer les données d'une base de donnée locale.
