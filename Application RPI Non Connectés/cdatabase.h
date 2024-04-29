@@ -11,7 +11,6 @@ using namespace std;
 class cdatabase
 {
     QSqlDatabase db;
-    filesystem::path cheminDossierSauvegarde = filesystem::current_path()/ "dossierREM";
 
 public:
     cdatabase(QString IP, QString Db, QString username, QString password, QString Port);

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <filesystem>
+#include "clog.h"
 #include "cping.h"
 #include "csauvegarde.h"
 
@@ -16,11 +17,12 @@ class MainWindow : public QMainWindow
     Ui::MainWindow *ui;
     csauvegarde save;
     cping ping;
+    CLog log;
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void updateLabelText();
-    void verifierSauvegarde();
 
 private slots:
     void on_close_clicked();

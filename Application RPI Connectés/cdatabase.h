@@ -2,6 +2,7 @@
 #define CDATABASE_H
 
 
+#include "csauvegarde.h"
 #include <QString>
 #include <QSqlDatabase>
 #include <filesystem>
@@ -11,7 +12,6 @@ class cdatabase
 {
     QSqlDatabase db;
     QString ip;
-    filesystem::path cheminDossierSauvegarde = filesystem::current_path()/ "dossierREM";
 
 public:
     cdatabase(QString IP, QString Db, QString username, QString password, QString Port);

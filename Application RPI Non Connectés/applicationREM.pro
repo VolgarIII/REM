@@ -14,6 +14,7 @@ win32 {
 
 SOURCES += \
     cdatabase.cpp \
+    clog.cpp \
     cping.cpp \
     csauvegarde.cpp \
     main.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 
 HEADERS += \
     cdatabase.h \
+    clog.h \
     cping.h \
     csauvegarde.h \
     mainwindow.h
