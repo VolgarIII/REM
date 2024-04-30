@@ -42,13 +42,6 @@ Voici à quoi ressemble l'IHM (Interface Homme Machine) du projet.<br>
 
 ## Contributeurs
 
-- [Julien](https://github.com/VolgarIII) - Développeur principal
-- Maxence - Développeur secondaire (Site Web)
-- Raphaël - Développeur tertiaire (Capteur de Porte)
-- Breynann - ??? (Capteur Impulsion)
-
-## Contributeurs
-
 - [Julien](https://github.com/VolgarIII) - Développeur principal (récupération et centralisation des données)
 - Maxence - Développeur secondaire (Site Web)
 - Raphaël - Développeur tertiaire (Capteur de Porte, Paramétrage dispostifs)
