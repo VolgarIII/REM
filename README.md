@@ -38,7 +38,7 @@ Ce projet consiste en une application de communication avec une base de données
 
 ## Interface Graphique
 Voici à quoi ressemble l'IHM (Interface Homme Machine) du projet.<br>
-![Imgur](https://imgur.com/56TcxkP)
+[Imgur](https://i.imgur.com/56TcxkP.png)
 
 ## Contributeurs
 
